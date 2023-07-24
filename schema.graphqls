@@ -1,0 +1,3380 @@
+type Query {
+  topCharityEventDonations(eventId: String = null): [TopCharityDonationsType]
+  myCharityDonations(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): CharityDonationTypeConnection
+  myCharityCard: CharityCardType
+  internationalInfo: UnisoftInfo
+  internationalChecks: [UnisoftCheckType]
+
+  """List of Basket."""
+  basketList(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, product: ID = null, stockrecord: ID = null, quantity_Gte: Int = null, quantity_Lte: Int = null): BasketTypeConnection
+
+  """List of brands."""
+  marketBrands(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null): BrandTypeConnection
+
+  """List of category."""
+  marketCategories(orderBy: [String] = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null, parent: ID = null): CategoryTypeConnection
+
+  """Look up category by ID."""
+  marketCategory(
+    """ID of the category."""
+    id: ID!
+  ): CategoryType
+
+  """Look up category by Slug."""
+  marketCategorySlug(
+    """SLUG of the category."""
+    slug: ID!
+  ): CategoryType
+
+  """List of product.(Рекомендуемые товары)"""
+  marketProductsRecommended(orderBy: [String] = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection
+
+  """List of product.(Выгодные предложения)"""
+  marketProductsOffered(orderBy: [String] = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection
+
+  """List of product."""
+  marketProducts(orderBy: [String] = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection
+
+  """Look up product by ID."""
+  marketProduct(
+    """ID of the product."""
+    id: ID!
+  ): ProductType
+
+  """Look up product by Slug."""
+  marketProductSlug(
+    """Slug of the product."""
+    slug: String!
+  ): ProductType
+
+  """List of offer."""
+  marketConditionalOffer(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name: String = null, name_Icontains: String = null, name_Istartswith: String = null, description: String = null): ConditionalOfferTypeConnection
+
+  """List of my transactions."""
+  myTransactions(categories: [Int] = null, startDate: Date = null, endDate: Date = null, operation: Int = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyTransactionTypeConnection
+
+  """List of my transaction categories."""
+  myTransactionCategories(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyTransactionCategoryTypeConnection
+
+  """List of my transaction category icons."""
+  myTransactionCategoryIcons(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyTransactionCategoryIconTypeConnection
+
+  """List of my Cars."""
+  oilChange(carId: Int = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, car: ID = null): OilChangeTypeConnection
+
+  """List of oil brands"""
+  oilBrand(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): OilBrandTypeConnection
+
+  """List of my Cars."""
+  mycars(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyCarTypeConnection
+
+  """List of Car models."""
+  carModels(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, brandId: ID = null): CarModelTypeConnection
+
+  """List of Brands."""
+  carBrands(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): CarBrandTypeConnection
+  qrpayCards: [QRPayCardType]
+  importableConnectedCards: [ImportableConnectedCardsType]
+  connectedServices(cardId: String!): [ConnectedServiceType]
+  localConnectedCards(phone: String!): [LocalConnectedCardType]
+  connectedCardsCount(phone: String!, onlyExternal: Boolean = false): Int
+  connectedCards(phone: String!, panLast: String = null, onlyExternal: Boolean = false): [ConnectedCardType]
+  currentMonthOutcome: BigInt
+  totalBalance: BigInt
+
+  """List of my Recipients."""
+  recipients(payerCardId: UUID = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, owner: String = null, owner_Icontains: String = null, pan: String = null, pan_Icontains: String = null): RecipientTypeConnection
+
+  """List of Styles."""
+  styles(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): StyleTypeConnection
+  cardTypes: [CardTypeType]
+
+  """List of my Cards."""
+  mycards(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: UUID = null): CardTypeConnection
+  linkedCards: [LinkedCard]
+
+  """List of user merchant account suggestions"""
+  accountSuggestions(merchantId: UUID!): [UserMerchantAccountSuggestionType]
+  p2pAmountLimit(currencyIso4217: String = null): P2PAmountLimitType
+
+  """List of incoming paycheck requests"""
+  incomingPaycheckRequests(dateFrom: Date = null, dateTo: Date = null, state: Int = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): PayCheckRequestTypeConnection
+
+  """List of my house transaction history"""
+  myHouseTransactionHistory(houseId: ID = null, categories: [ID] = null, dateFrom: Date = null, dateTo: Date = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: UUID = null): CheckTypeConnection
+  merchant(id: ID = null): MerchantType
+  hcsprice: [HCSPriceType]
+  autopay(id: ID = null): AutoPayType
+
+  """List of autopay"""
+  autopayList(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, name_Icontains: String = null): AutoPayTypeConnection
+  merchantCategory(id: ID = null): MerchantCategoryType
+  checks: [CheckType]
+  getCheck(id: ID = null): CheckType
+
+  """List of categories"""
+  merchantCategoryList(type: Int = 0, longitude: Float = null, latitude: Float = null, radius: Float = 5, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, title: String = null, title_Icontains: String = null): MerchantCategoryTypeConnection
+  _debug: DjangoDebug
+
+  """List of Merchant."""
+  merchantList(type: Int = 0, longitude: Float = null, latitude: Float = null, radius: Float = 5, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: UUID = null, name: String = null, name_Icontains: String = null): MerchantTypeConnection
+
+  """List of DeleteAccountReasons"""
+  deleteAccountReasons(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): DeleteAccountReasonTypeConnection
+
+  """List of Stories"""
+  stories(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title_Icontains: String = null): StoryTypeConnection
+  story(id: ID = null): StoryType
+  storyContents(storyId: ID = null): [StoryContentType]
+
+  """List of my house transaction history"""
+  houseUtilityBills(region: ID!, personType: PersonTypesEnum!): [CommonBillType]
+  houseUtilityRegions: [RegionType]
+  savedPayment(id: ID = null): SavedPaymentType
+
+  """List of NewsCategory"""
+  newsCategories(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): NewsCategoryTypeConnection
+
+  """List of News"""
+  newsList(exclude: String = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title_Icontains: String = null, category: ID = null): NewsTypeConnection
+
+  """Single news"""
+  news(slug: String = null): NewsType
+
+  """List of BlogCategory"""
+  blogCategories(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): BlogCategoryTypeConnection
+
+  """Single blog"""
+  blog(id: String = null): BlogType
+
+  """List of Blogs"""
+  blogs(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title_Icontains: String = null, category: ID = null): BlogTypeConnection
+  services: [ServiceType]
+  page(slug: String = null): PageType
+
+  """List of Notifications."""
+  notifications(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): NotificationTypeConnection
+  notificationStatistics: UserNotificationStatisticsType
+
+  """List of faqs."""
+  faqs(id: ID = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, question_Icontains: String = null): FAQTypeConnection
+  cadasterData(cadasterNumber: String = null): CadasterAddressType
+
+  """List of trusted user devices."""
+  userDevices(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): UserDeviceTypeConnection
+
+  """List of my saved payments."""
+  savedPayments(refresh: Boolean = false, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, title: String = null, title_Icontains: String = null): SavedPaymentTypeConnection
+
+  """List of my homes."""
+  myhomes(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyHomeTypeConnection
+  me: UserModelType
+
+  """List of Bank branches"""
+  bankBranches(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name_Icontains: String = null, bank: ID = null): BankBranchTypeConnection
+
+  """List of Bank."""
+  banks(bins: String = null, offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, name_Icontains: String = null): BankTypeConnection
+}
+
+type TopCharityDonationsType {
+  user: TopCharityDonationUserType
+  amount: Int!
+  createdAt: DateTime!
+}
+
+type TopCharityDonationUserType {
+  fullName: String
+  avatar: String
+  isMe: Boolean
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+type CharityDonationTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CharityDonationTypeEdge]!
+}
+
+"""
+The Relay compliant `PageInfo` type, containing data necessary to paginate this connection.
+"""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A Relay edge containing a `CharityDonationType` and its cursor."""
+type CharityDonationTypeEdge {
+  """The item at the end of the edge"""
+  node: CharityDonationType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CharityDonationType implements Node {
+  user: UserType
+  card: CharityCardType
+  fund: CharityFundType
+  event: CharityEventType
+  amount: Int!
+  createdAt: DateTime!
+  id: ID!
+}
+
+"""An object with an ID"""
+interface Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+type UserType {
+  id: Int
+  phone: String
+  fullName: String
+  avatar: String
+}
+
+type CharityCardType implements Node {
+  user: UserType
+
+  """tiyinda"""
+  balance: Int!
+  id: ID!
+}
+
+type CharityFundType implements Node {
+  name: String!
+  logo: String
+  description: String!
+  id: ID!
+}
+
+type CharityEventType implements Node {
+  name: String!
+  description: String!
+  image: String
+  createdAt: DateTime!
+  fund: CharityFundType
+  id: ID!
+}
+
+type UnisoftInfo {
+  min: Int
+  max: Int
+  rate: Float
+}
+
+type UnisoftCheckType implements Node {
+  id: ID!
+  createTime: DateTime!
+  payTime: DateTime
+  cancelTime: DateTime
+  state: Int!
+  error: String
+  description: String
+  account: JSONString!
+  accountData: JSONString!
+  amount: Int
+  currencyAmount: Int!
+  currency: CurrencyType!
+  transactionType: Int!
+  commission: Int!
+  rate: Float
+  operation: Int!
+}
+
+"""
+Allows use of a JSON String for input / output from the GraphQL schema.
+
+Use of this type is *not recommended* as you lose the benefits of having a defined, static
+schema (one of the key benefits of GraphQL).
+"""
+scalar JSONString
+
+type CurrencyType implements Node {
+  name: String!
+  code: String!
+
+  """The ID of the object"""
+  id: ID!
+  iso4217: ID!
+}
+
+type BasketTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BasketTypeEdge]!
+}
+
+"""A Relay edge containing a `BasketType` and its cursor."""
+type BasketTypeEdge {
+  """The item at the end of the edge"""
+  node: BasketType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BasketType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  product: ProductType!
+  stockrecord: StockRecordType!
+  quantity: Int!
+  priceCurrency: String!
+
+  """"""
+  priceExclTax: Decimal
+
+  """"""
+  priceInclTax: Decimal
+  dateCreated: DateTime!
+  dateUpdated: DateTime!
+}
+
+type UserModelType implements Node {
+  id: ID!
+  username: String
+  firstName: String
+  lastName: String
+  fullName: String
+  email: String
+  emailVerified: Boolean!
+  phone: String!
+  backupPhone: String
+  gender: CommonUserGenderChoices
+  verified: Boolean!
+  address: String
+  birthday: Date
+  avatar: String
+  smsForAll: Boolean!
+}
+
+"""An enumeration."""
+enum CommonUserGenderChoices {
+  """male"""
+  M
+
+  """female"""
+  F
+}
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+type ProductType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  title: String!
+  slug: String!
+  description: String!
+
+  """
+  Universal Product Code (UPC) is an identifier for a product which is not specific to a particular  supplier. Eg an ISBN for a book.
+  """
+  upc: String
+  metaTitle: String
+  metaDescription: String
+
+  """Choose what type of product this is"""
+  productClass: ProductClassType
+
+  """
+  A product attribute is something that this product may have, such as a size, as specified by its class
+  """
+  attributes(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductAttributeTypeConnection!
+
+  """
+  Options are values that can be associated with a item when it is added to a customer's basket.  This could be something like a personalised message to be printed on a T-shirt.
+  """
+  productOptions(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): OptionTypeConnection!
+
+  """These are products that are recommended to accompany the main product."""
+  recommendedProducts(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+  rating: Float
+  dateCreated: DateTime!
+  dateUpdated: DateTime!
+  categories(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null, parent: ID = null): CategoryTypeConnection!
+  brand: BrandType
+
+  """This flag indicates if this product can be used in an offer or not"""
+  isDiscountable: Boolean!
+
+  """Show this product in search results and catalogue listings."""
+  isPublic: Boolean!
+
+  """Show this product in Main Page (Выгодные предложения)."""
+  isOffered: Boolean!
+
+  """Show this product in Main Page (Рекомендуемые товары)."""
+  isRecommended: Boolean!
+  variant(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, type: String = null): VariantTypeConnection!
+  attributeValues(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductAttributeValueTypeConnection!
+  variantGroup(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, product: ID = null, variants: [ID] = null): ProductVariantGroupTypeConnection!
+
+  """These are products that are recommended to accompany the main product."""
+  productSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+  images(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductImageTypeConnection!
+  reviews(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductReviewTypeConnection!
+  stockrecords(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): StockRecordTypeConnection!
+  basketLines(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, product: ID = null, stockrecord: ID = null, quantity_Gte: Int = null, quantity_Lte: Int = null): BasketTypeConnection!
+  hasOptions: Boolean
+  isShippingRequired: Boolean
+  hasStockrecords: Boolean
+  numStockrecords: Int
+  numApprovedReviews: Int
+  colors: [String]
+}
+
+type ProductClassType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  name: String!
+  slug: String!
+  requiresShipping: Boolean!
+  trackStock: Boolean!
+  options(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): OptionTypeConnection!
+  attributes(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductAttributeTypeConnection!
+
+  """Choose what type of product this is"""
+  products(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+}
+
+type OptionTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [OptionTypeEdge]!
+}
+
+"""A Relay edge containing a `OptionType` and its cursor."""
+type OptionTypeEdge {
+  """The item at the end of the edge"""
+  node: OptionType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type OptionType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  name: String!
+  code: String!
+  type: CatalogueProductOptionAttributeTypeChoices!
+  required: Boolean!
+
+  """
+  Options are values that can be associated with a item when it is added to a customer's basket.  This could be something like a personalised message to be printed on a T-shirt.
+  """
+  productSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+  productclassSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ProductClassTypeConnection!
+}
+
+"""An enumeration."""
+enum CatalogueProductOptionAttributeTypeChoices {
+  """Текст"""
+  TEXT
+
+  """Целое"""
+  INTEGER
+
+  """True / False"""
+  BOOLEAN
+
+  """Float"""
+  FLOAT
+
+  """Date"""
+  DATE
+}
+
+type ProductTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductType` and its cursor."""
+type ProductTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductClassTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductClassTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductClassType` and its cursor."""
+type ProductClassTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductClassType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductAttributeTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductAttributeTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductAttributeType` and its cursor."""
+type ProductAttributeTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductAttributeType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductAttributeType implements Node {
+  id: ID!
+  productClass: ProductClassType
+  name: String!
+  code: String!
+  type: CatalogueProductAttributeTypeChoices!
+  required: Boolean!
+  value: String
+  isOption: Boolean
+  isMultiOption: Boolean
+  isFile: Boolean
+}
+
+"""An enumeration."""
+enum CatalogueProductAttributeTypeChoices {
+  """Текст"""
+  TEXT
+
+  """Целое"""
+  INTEGER
+
+  """True / False"""
+  BOOLEAN
+
+  """Float"""
+  FLOAT
+
+  """Rich Text"""
+  RICHTEXT
+
+  """Date"""
+  DATE
+
+  """Datetime"""
+  DATETIME
+
+  """Option"""
+  OPTION
+
+  """Multi Option"""
+  MULTI_OPTION
+
+  """Entity"""
+  ENTITY
+
+  """Файл"""
+  FILE
+
+  """Изображение"""
+  IMAGE
+}
+
+type CategoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CategoryTypeEdge]!
+}
+
+"""A Relay edge containing a `CategoryType` and its cursor."""
+type CategoryTypeEdge {
+  """The item at the end of the edge"""
+  node: CategoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CategoryType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  title: String!
+  slug: String!
+  parent: CategoryType
+  color: String
+  description: String!
+  image: String
+  icon: String
+
+  """Show this category in search results and catalogue listings."""
+  isPublic: Boolean!
+  metaTitle: String
+  metaDescription: String
+  children(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null, parent: ID = null): CategoryTypeConnection!
+  productSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+}
+
+type BrandType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  title: String!
+  slug: String!
+  image: String
+
+  """Show this brand in search results and catalogue listings."""
+  isPublic: Boolean!
+  countProduct: Int!
+  rate: Float!
+  metaTitle: String
+  metaDescription: String
+  productSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+}
+
+type VariantTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VariantTypeEdge]!
+}
+
+"""A Relay edge containing a `VariantType` and its cursor."""
+type VariantTypeEdge {
+  """The item at the end of the edge"""
+  node: VariantType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type VariantType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  type: CatalogueVariantTypeChoices!
+  name: String!
+  code: String!
+  variantValue(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, variant: ID = null, group_Id: Float = null, group_Id_In: [String] = null, group_Product_Id: Float = null, group_Product_Id_In: [String] = null): VariantValueTypeConnection!
+  products(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title: String = null, title_Icontains: String = null, title_Istartswith: String = null, description: String = null, description_Icontains: String = null, description_Istartswith: String = null): ProductTypeConnection!
+}
+
+"""An enumeration."""
+enum CatalogueVariantTypeChoices {
+  """button"""
+  BUTTON
+
+  """image"""
+  IMAGE
+
+  """select"""
+  SELECT
+
+  """color"""
+  COLOR
+}
+
+type VariantValueTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VariantValueTypeEdge]!
+}
+
+"""A Relay edge containing a `VariantValueType` and its cursor."""
+type VariantValueTypeEdge {
+  """The item at the end of the edge"""
+  node: VariantValueType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type VariantValueType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  variant: VariantType!
+  valueText: String
+  valueImage: String
+  group(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, product: ID = null, variants: [ID] = null): ProductVariantGroupTypeConnection!
+  value: String
+}
+
+type ProductVariantGroupTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductVariantGroupTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductVariantGroupType` and its cursor."""
+type ProductVariantGroupTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductVariantGroupType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductVariantGroupType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  product: ProductType!
+  variants(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, variant: ID = null, group_Id: Float = null, group_Id_In: [String] = null, group_Product_Id: Float = null, group_Product_Id_In: [String] = null): VariantValueTypeConnection!
+  default: Boolean!
+  groupImage: String
+  stockrecords: StockRecordType
+}
+
+type StockRecordType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  product: ProductType!
+  productVariantGroup: ProductVariantGroupType
+  partner: PartnerType!
+  partnerSku: String!
+  priceCurrency: String!
+
+  """"""
+  price: Decimal
+
+  """"""
+  discountedPrice: Decimal
+  discountedPercentage: Int
+  numInStock: Int
+  numAllocated: Int
+  lowStockThreshold: Int
+  dateCreated: DateTime!
+  dateUpdated: DateTime!
+  basketLines(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, product: ID = null, stockrecord: ID = null, quantity_Gte: Int = null, quantity_Lte: Int = null): BasketTypeConnection!
+  netStockLevel: Int
+  canTrackAllocations: Boolean
+  isBelowThreshold: Boolean
+}
+
+type PartnerType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  code: String!
+  name: String!
+  users(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): UserModelTypeConnection!
+  stockrecords(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): StockRecordTypeConnection!
+  displayName: String
+  primaryAddress: String
+}
+
+type UserModelTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserModelTypeEdge]!
+}
+
+"""A Relay edge containing a `UserModelType` and its cursor."""
+type UserModelTypeEdge {
+  """The item at the end of the edge"""
+  node: UserModelType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type StockRecordTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [StockRecordTypeEdge]!
+}
+
+"""A Relay edge containing a `StockRecordType` and its cursor."""
+type StockRecordTypeEdge {
+  """The item at the end of the edge"""
+  node: StockRecordType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""The `Decimal` scalar type represents a python Decimal."""
+scalar Decimal
+
+type ProductAttributeValueTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductAttributeValueTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductAttributeValueType` and its cursor."""
+type ProductAttributeValueTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductAttributeValueType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductAttributeValueType implements Node {
+  id: ID!
+  attribute: ProductAttributeType!
+  code: String
+  name: String
+  value: String
+}
+
+type ProductImageTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductImageTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductImageType` and its cursor."""
+type ProductImageTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductImageType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductImageType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  product: ProductType!
+  original: String!
+  caption: String!
+
+  """
+  An image with a display order of zero will be the primary image for a product
+  """
+  displayOrder: Int!
+  dateCreated: DateTime!
+  image: String
+}
+
+type ProductReviewTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ProductReviewTypeEdge]!
+}
+
+"""A Relay edge containing a `ProductReviewType` and its cursor."""
+type ProductReviewTypeEdge {
+  """The item at the end of the edge"""
+  node: ProductReviewType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ProductReviewType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  product: ProductType
+  score: Int
+  body: String!
+  user: UserModelType
+  isAnonymous: Boolean
+  status: ReviewsProductReviewStatusChoices!
+  totalVotes: Int!
+  deltaVotes: Int!
+  dateCreated: DateTime!
+  votes(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): VoteTypeConnection!
+  images(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null): ReviewImageTypeConnection!
+  isRejected: Boolean
+  numDownVotes: Boolean
+  reviewerName: Boolean
+  pendingModeration: Boolean
+  isApproved: Boolean
+  hasVotes: Boolean
+  numUpVotes: Boolean
+}
+
+"""An enumeration."""
+enum ReviewsProductReviewStatusChoices {
+  """Requires moderation"""
+  A_0
+
+  """Approved"""
+  A_1
+
+  """Rejected"""
+  A_2
+}
+
+type VoteTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [VoteTypeEdge]!
+}
+
+"""A Relay edge containing a `VoteType` and its cursor."""
+type VoteTypeEdge {
+  """The item at the end of the edge"""
+  node: VoteType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type VoteType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  review: ProductReviewType!
+  user: UserModelType!
+  delta: ReviewsVoteDeltaChoices!
+  dateCreated: DateTime!
+}
+
+"""An enumeration."""
+enum ReviewsVoteDeltaChoices {
+  """Up"""
+  A_1
+
+  """Down"""
+  _1
+}
+
+type ReviewImageTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ReviewImageTypeEdge]!
+}
+
+"""A Relay edge containing a `ReviewImageType` and its cursor."""
+type ReviewImageTypeEdge {
+  """The item at the end of the edge"""
+  node: ReviewImageType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ReviewImageType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: UserModelType
+  modifiedBy: UserModelType
+  review: ProductReviewType!
+  original: String!
+  caption: String!
+
+  """
+  An image with a display order of zero will be the primary image for a product
+  """
+  displayOrder: Int!
+  dateCreated: DateTime!
+  image: String
+}
+
+type BrandTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BrandTypeEdge]!
+}
+
+"""A Relay edge containing a `BrandType` and its cursor."""
+type BrandTypeEdge {
+  """The item at the end of the edge"""
+  node: BrandType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ConditionalOfferTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [ConditionalOfferTypeEdge]!
+}
+
+"""A Relay edge containing a `ConditionalOfferType` and its cursor."""
+type ConditionalOfferTypeEdge {
+  """The item at the end of the edge"""
+  node: ConditionalOfferType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ConditionalOfferType implements Node {
+  id: ID!
+
+  """This is displayed within the customer's basket"""
+  name: String!
+  slug: String!
+  image: String!
+
+  """This is displayed on the offer browsing page"""
+  description: String!
+  offerType: OfferConditionalOfferOfferTypeChoices!
+
+  """Exclusive offers cannot be combined on the same items"""
+  exclusive: Boolean!
+
+  """
+  Select other non-exclusive offers that this offer can be combined with on the same items
+  """
+  combinations(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name: String = null, name_Icontains: String = null, name_Istartswith: String = null, description: String = null): ConditionalOfferTypeConnection!
+  status: String!
+  condition: ConditionType!
+  benefit: BenefitType!
+
+  """The highest priority offers are applied first"""
+  priority: Int!
+
+  """
+  Offers are active from the start date. Leave this empty if the offer has no start date.
+  """
+  startDatetime: DateTime
+
+  """
+  Offers are active until the end date. Leave this empty if the offer has no expiry date.
+  """
+  endDatetime: DateTime
+
+  """The number of times this offer can be used before it is unavailable"""
+  maxGlobalApplications: Int
+
+  """The number of times a single user can use this offer"""
+  maxUserApplications: Int
+
+  """The number of times this offer can be applied to a basket (and order)"""
+  maxBasketApplications: Int
+
+  """
+  When an offer has given more discount to orders than this threshold, then the offer becomes unavailable
+  """
+  maxDiscount: Decimal
+
+  """"""
+  totalDiscount: Decimal!
+  numApplications: Int!
+  numOrders: Int!
+  redirectUrl: String!
+  dateCreated: DateTime!
+
+  """
+  Select other non-exclusive offers that this offer can be combined with on the same items
+  """
+  inCombination(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name: String = null, name_Icontains: String = null, name_Istartswith: String = null, description: String = null): ConditionalOfferTypeConnection!
+  isVoucherOfferType: Boolean
+  isOpen: Boolean
+  isSuspended: Boolean
+  isAvailable: Boolean
+  isConditionSatisfied: Boolean
+  isConditionPartiallySatisfied: Boolean
+  hasProducts: Boolean
+}
+
+"""An enumeration."""
+enum OfferConditionalOfferOfferTypeChoices {
+  """Site offer - available to all users"""
+  SITE
+
+  """
+  Voucher offer - only available after entering the appropriate voucher code
+  """
+  VOUCHER
+
+  """User offer - available to certain types of user"""
+  USER
+
+  """
+  Session offer - temporary offer, available for a user for the duration of their session
+  """
+  SESSION
+}
+
+type ConditionType implements Node {
+  """The ID of the object"""
+  id: ID!
+  type: OfferConditionTypeChoices
+
+  """"""
+  value: Decimal
+  proxyClass: String
+  offers(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name: String = null, name_Icontains: String = null, name_Istartswith: String = null, description: String = null): ConditionalOfferTypeConnection!
+}
+
+"""An enumeration."""
+enum OfferConditionTypeChoices {
+  """Depends on number of items in basket that are in condition range"""
+  COUNT
+
+  """Depends on value of items in basket that are in condition range"""
+  VALUE
+
+  """
+  Needs to contain a set number of DISTINCT items from the condition range
+  """
+  COVERAGE
+}
+
+type BenefitType implements Node {
+  """The ID of the object"""
+  id: ID!
+  type: OfferBenefitTypeChoices
+
+  """"""
+  value: Decimal
+
+  """
+  Set this to prevent the discount consuming all items within the range that are in the basket.
+  """
+  maxAffectedItems: Int
+  proxyClass: String
+  offers(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, name: String = null, name_Icontains: String = null, name_Istartswith: String = null, description: String = null): ConditionalOfferTypeConnection!
+}
+
+"""An enumeration."""
+enum OfferBenefitTypeChoices {
+  """Discount is a percentage off of the product's value"""
+  PERCENTAGE
+
+  """Discount is a fixed amount off of the product's value"""
+  ABSOLUTE
+
+  """Discount is to give the cheapest product for free"""
+  MULTIBUY
+
+  """Get the products that meet the condition for a fixed price"""
+  FIXED_PRICE
+
+  """Discount is a fixed amount of the shipping cost"""
+  SHIPPING_ABSOLUTE
+
+  """Get shipping for a fixed price"""
+  SHIPPING_FIXED_PRICE
+
+  """Discount is a percentage off of the shipping cost"""
+  SHIPPING_PERCENTAGE
+}
+
+type MyTransactionTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MyTransactionTypeEdge]!
+}
+
+"""A Relay edge containing a `MyTransactionType` and its cursor."""
+type MyTransactionTypeEdge {
+  """The item at the end of the edge"""
+  node: MyTransactionType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MyTransactionType implements Node {
+  id: ID!
+  user: UserType
+  category: MyTransactionCategoryType
+  title: String
+  amount: BigInt
+  operation: Int
+  date: Date
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type MyTransactionCategoryType implements Node {
+  id: ID!
+  name: String!
+  icon: MyTransactionCategoryIconType
+}
+
+type MyTransactionCategoryIconType implements Node {
+  id: ID!
+  name: String!
+  icon: String
+  code: String
+  colorHex: String
+}
+
+"""
+The `BigInt` scalar type represents non-fractional whole numeric values.
+`BigInt` is not constrained to 32-bit like the `Int` type and thus is a less
+compatible type.
+"""
+scalar BigInt
+
+type MyTransactionCategoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MyTransactionCategoryTypeEdge]!
+}
+
+"""A Relay edge containing a `MyTransactionCategoryType` and its cursor."""
+type MyTransactionCategoryTypeEdge {
+  """The item at the end of the edge"""
+  node: MyTransactionCategoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MyTransactionCategoryIconTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MyTransactionCategoryIconTypeEdge]!
+}
+
+"""
+A Relay edge containing a `MyTransactionCategoryIconType` and its cursor.
+"""
+type MyTransactionCategoryIconTypeEdge {
+  """The item at the end of the edge"""
+  node: MyTransactionCategoryIconType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type OilChangeTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [OilChangeTypeEdge]!
+}
+
+"""A Relay edge containing a `OilChangeType` and its cursor."""
+type OilChangeTypeEdge {
+  """The item at the end of the edge"""
+  node: OilChangeType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type OilChangeType implements Node {
+  id: ID!
+  brand: OilBrandType
+  lastChangeDate: Date!
+  lastMileage: Int!
+  kmfor: Int!
+  dailyKm: Int
+}
+
+type OilBrandType implements Node {
+  id: ID!
+  name: String!
+  order: Int!
+}
+
+type OilBrandTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [OilBrandTypeEdge]!
+}
+
+"""A Relay edge containing a `OilBrandType` and its cursor."""
+type OilBrandTypeEdge {
+  """The item at the end of the edge"""
+  node: OilBrandType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MyCarTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MyCarTypeEdge]!
+}
+
+"""A Relay edge containing a `MyCarType` and its cursor."""
+type MyCarTypeEdge {
+  """The item at the end of the edge"""
+  node: MyCarType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MyCarType implements Node {
+  id: ID!
+  user: UserModelType!
+  plateNumber: String
+  techPass: String
+  model: CarModelType
+  photo: String
+  year: String
+  deleted: Boolean!
+  deletedAt: DateTime
+  oilchanges(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, car: ID = null): OilChangeTypeConnection!
+  finesCount: Int
+  finesAmount: Float
+}
+
+type CarModelType implements Node {
+  id: ID!
+  name: String!
+  brand: CarBrandType
+  photo: String
+  alias: String!
+  mycarSet(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null): MyCarTypeConnection!
+}
+
+type CarBrandType implements Node {
+  id: ID!
+  name: String
+  logo: String
+  models(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, brandId: ID = null): CarModelTypeConnection!
+}
+
+type CarModelTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CarModelTypeEdge]!
+}
+
+"""A Relay edge containing a `CarModelType` and its cursor."""
+type CarModelTypeEdge {
+  """The item at the end of the edge"""
+  node: CarModelType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CarBrandTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CarBrandTypeEdge]!
+}
+
+"""A Relay edge containing a `CarBrandType` and its cursor."""
+type CarBrandTypeEdge {
+  """The item at the end of the edge"""
+  node: CarBrandType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type QRPayCardType implements Node {
+  id: ID!
+  numId: Int
+  publicKey: String
+}
+
+type ImportableConnectedCardsType implements Node {
+  id: ID!
+  phone: String!
+  fullName: String!
+  cardType: CardTypeType!
+  cardNumber: String
+  bank: BankType
+}
+
+type CardTypeType {
+  id: ID!
+  vendor: KpCardsCardTypeVendorChoices!
+  processing: KpCardsCardTypeProcessingChoices!
+  vendorLogo: String
+  processingLogo: String
+  ranges: [CardRangeType]
+}
+
+"""An enumeration."""
+enum KpCardsCardTypeVendorChoices {
+  """Uzcard"""
+  UZCARD
+
+  """Humo"""
+  HUMO
+
+  """Mir"""
+  MIR
+
+  """UnionPay"""
+  UNIONPAY
+
+  """Visa"""
+  VISA
+
+  """Mastercard"""
+  MASTERCARD
+}
+
+"""An enumeration."""
+enum KpCardsCardTypeProcessingChoices {
+  """Uzcard"""
+  UZCARD
+
+  """Humo"""
+  HUMO
+
+  """Kapitalbank"""
+  KAPITALBANK
+}
+
+type CardRangeType {
+  start: Int
+  end: Int
+}
+
+type BankType implements Node {
+  name: String
+  bankC: String!
+  logo: String
+  logoForCard: String
+  p2pInLimit: Int!
+  p2pOutLimit: Int!
+  bins: [String]
+  id: ID!
+}
+
+type ConnectedServiceType {
+  name: String!
+  brand: String!
+  logoUrl: String
+}
+
+type LocalConnectedCardType implements Node {
+  id: ID!
+  fullName: String
+  cardType: CardTypeType
+  cardNumber: String
+}
+
+type ConnectedCardType implements Node {
+  id: ID!
+  phone: String!
+  fullName: String!
+  cardType: CardTypeType!
+  cardNumber: String
+}
+
+type RecipientTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [RecipientTypeEdge]!
+}
+
+"""A Relay edge containing a `RecipientType` and its cursor."""
+type RecipientTypeEdge {
+  """The item at the end of the edge"""
+  node: RecipientType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type RecipientType implements Node {
+  """The ID of the object"""
+  id: ID!
+  owner: String
+  cardType: CardTypeType
+  cardNumber: String
+}
+
+"""
+Leverages the internal Python implementation of UUID (uuid.UUID) to provide native UUID objects
+in fields, resolvers and input.
+"""
+scalar UUID
+
+type StyleTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [StyleTypeEdge]!
+}
+
+"""A Relay edge containing a `StyleType` and its cursor."""
+type StyleTypeEdge {
+  """The item at the end of the edge"""
+  node: StyleType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type StyleType implements Node {
+  id: ID!
+  name: String!
+  background: String!
+}
+
+type CardTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CardTypeEdge]!
+}
+
+"""A Relay edge containing a `CardType` and its cursor."""
+type CardTypeEdge {
+  """The item at the end of the edge"""
+  node: CardType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type CardType implements Node {
+  id: ID!
+  fullName: String
+  balance: BigInt
+  expiry: String!
+  cardType: CardTypeType
+  currency: CurrencyType!
+  aacct: String
+  cardName: String
+  style: StyleType
+  bank: BankType!
+  main: Boolean!
+  inTotalBalance: Boolean!
+  isVirtual: Boolean
+  isCorporate: Boolean!
+  monitoringService: CardMonitoringServiceType
+  monitoringEnabled: Boolean
+  isRefreshBalanceSuccess: Boolean
+  processingStatus: Int
+  cardNumber: String
+  background: String
+  fullPan: String
+}
+
+type CardMonitoringServiceType {
+  lastPayedAt: DateTime
+}
+
+type LinkedCard {
+  cardholderName: String
+  pan: String
+  maskedPan: String
+  expiry: String
+}
+
+type UserMerchantAccountSuggestionType {
+  fieldId: String
+  accounts: [String]
+}
+
+type P2PAmountLimitType {
+  min: BigInt
+  max: BigInt
+}
+
+type PayCheckRequestTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [PayCheckRequestTypeEdge]!
+}
+
+"""A Relay edge containing a `PayCheckRequestType` and its cursor."""
+type PayCheckRequestTypeEdge {
+  """The item at the end of the edge"""
+  node: PayCheckRequestType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type PayCheckRequestType implements Node {
+  id: ID!
+  transaction: CheckType
+  toUser: UserModelType!
+  fromUser: UserModelType!
+  state: Int!
+  createdAt: DateTime!
+  cancelledAt: DateTime
+}
+
+type CheckType implements Node {
+  id: ID!
+  createTime: DateTime!
+  payTime: DateTime
+  cancelTime: DateTime
+  state: Int!
+  error: String
+  description: String
+  account: JSONString!
+  accountData: JSONString!
+  amount: BigInt
+  comment: String
+  commission: BigInt
+  transactionType: Int!
+  currency: CurrencyType!
+  card: LocalConnectedCardType
+  merchant: MerchantType!
+  canRepeat: Boolean!
+  canSave: Boolean!
+  canCancel: Boolean!
+  operation: Int!
+  items: [CheckItemType]
+  savedPayment: SavedPaymentType
+  fiscalChecks: [FiscalCheckType!]
+  checkoutUrl: String
+  isExpired: Boolean
+  currencyObj: CurrencyType
+}
+
+type MerchantType implements Node {
+  id: ID!
+  name: String
+  organization: OrganizationType!
+  category: MerchantCategoryType!
+  logo: String
+  amount: AmountFieldType
+  accountInfo: Boolean!
+  weight: Float!
+
+  """"""
+  longitude: Decimal
+
+  """"""
+  latitude: Decimal
+  address: String
+  landmark: String
+  products: [MerchantProductType!]!
+  fields: [FormFieldsType!]!
+  prevention: Boolean
+  _debug: DjangoDebug
+  distance: Float
+  canWoReg: Boolean
+}
+
+type OrganizationType {
+  id: ID!
+  name: String
+}
+
+type MerchantCategoryType implements Node {
+  """The ID of the object"""
+  id: ID!
+  title: String
+  icon: String
+  colorHex: String
+  monitoringIcon: String
+  merchants(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: UUID = null, name: String = null, name_Icontains: String = null): MerchantTypeConnection!
+}
+
+type MerchantTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MerchantTypeEdge]!
+}
+
+"""A Relay edge containing a `MerchantType` and its cursor."""
+type MerchantTypeEdge {
+  """The item at the end of the edge"""
+  node: MerchantType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type AmountFieldType {
+  min: Int!
+  max: BigInt
+  isRounded: Boolean
+  require: String
+}
+
+type MerchantProductType {
+  id: Int
+  name: String!
+
+  """Tiyinda"""
+  price: Int!
+  image: String
+  ofdSpic: String
+  ofdVatPercent: Int
+}
+
+type FormFieldsType {
+  id: ID!
+  name: String!
+  title: String!
+  content: PaymentsFormFieldsContentChoices!
+  length: Int
+  type: PaymentsFormFieldsTypeChoices!
+  prefix: PrefixFieldType
+  placeholder: String
+  replace: String
+  error: String
+  scan: PaymentsFormFieldsScanChoices
+  optional: Boolean!
+  visible: VisibleFieldType
+  require: String
+  validation: String
+  validationError: String
+  values: [ValuesFieldType!]!
+}
+
+"""An enumeration."""
+enum PaymentsFormFieldsContentChoices {
+  """Raqam"""
+  NUMBER
+
+  """Matn"""
+  TEXT
+
+  """Telefon raqam"""
+  PHONE
+}
+
+"""An enumeration."""
+enum PaymentsFormFieldsTypeChoices {
+  """Oddiy matn"""
+  TEXT
+
+  """Tanlash"""
+  SELECT
+
+  """SmartCombo"""
+  SMARTCOMBO
+}
+
+type PrefixFieldType {
+  id: ID!
+  type: PaymentsPrefixFieldTypeChoices!
+  value: String
+  output: Boolean!
+  values: [PrefixValuesType!]!
+}
+
+"""An enumeration."""
+enum PaymentsPrefixFieldTypeChoices {
+  """Statik"""
+  STATIC
+
+  """Tanlash"""
+  SELECT
+}
+
+type PrefixValuesType {
+  id: ID!
+  title: String!
+  value: String!
+}
+
+"""An enumeration."""
+enum PaymentsFormFieldsScanChoices {
+  """Karta"""
+  CARD
+
+  """Barcode"""
+  BARCODE
+
+  """QR-Code"""
+  QRCODE
+}
+
+type VisibleFieldType {
+  id: ID!
+  require: String!
+  value: String!
+}
+
+type ValuesFieldType {
+  id: ID!
+  name: String
+  value: String!
+  title: String!
+  filter: String
+  description: String
+  amount: Int
+}
+
+"""Debugging information for the current query."""
+type DjangoDebug {
+  """Executed SQL queries for this API query."""
+  sql: [DjangoDebugSQL]
+}
+
+"""Represents a single database query made to a Django managed DB."""
+type DjangoDebugSQL {
+  """The type of database being used (e.g. postrgesql, mysql, sqlite)."""
+  vendor: String!
+
+  """The Django database alias (e.g. 'default')."""
+  alias: String!
+
+  """The actual SQL sent to this database."""
+  sql: String
+
+  """Duration of this database query in seconds."""
+  duration: Float!
+
+  """The raw SQL of this query, without params."""
+  rawSql: String!
+
+  """JSON encoded database query parameters."""
+  params: String!
+
+  """Start time of this database query."""
+  startTime: Float!
+
+  """Stop time of this database query."""
+  stopTime: Float!
+
+  """Whether this database query took more than 10 seconds."""
+  isSlow: Boolean!
+
+  """Whether this database query was a SELECT."""
+  isSelect: Boolean!
+
+  """Postgres transaction ID if available."""
+  transId: String
+
+  """Postgres transaction status if available."""
+  transStatus: String
+
+  """Postgres isolation level if available."""
+  isoLevel: String
+
+  """Postgres connection encoding if available."""
+  encoding: String
+}
+
+type CheckItemType {
+  Name: String
+  Barcode: String
+  Label: String
+  SPIC: String
+  Units: Int
+  PackageCode: String
+  GoodPrice: Int
+  Price: Int
+  Amount: Int
+  VAT: Int
+  VATPercent: Int
+  Discount: Int
+  Other: Int
+}
+
+type SavedPaymentType implements Node {
+  """The ID of the object"""
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UserModelType!
+  myhome: MyHomeType
+  merchant: MerchantType!
+  title: String!
+  amount: Int!
+  account: JSONString
+  accountData: JSONString
+  transactionSet: [SingleMonitoringKPTransactionType!]!
+  userAccount: String
+  balance: String
+}
+
+type MyHomeType implements Node {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  user: UserModelType!
+  title: String!
+  cadasterNumber: String
+  homeData: JSONString
+  photo: String
+  savedPayments(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, id: Float = null, title: String = null, title_Icontains: String = null): SavedPaymentTypeConnection!
+}
+
+type SavedPaymentTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [SavedPaymentTypeEdge]!
+}
+
+"""A Relay edge containing a `SavedPaymentType` and its cursor."""
+type SavedPaymentTypeEdge {
+  """The item at the end of the edge"""
+  node: SavedPaymentType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type SingleMonitoringKPTransactionType {
+  id: UUID!
+  accountData: JSONString!
+  fiscalChecks: [FiscalCheckType!]
+  receiptPdf: String
+}
+
+type FiscalCheckType {
+  id: ID!
+  TerminalID: String
+  DateTime: DateTime
+  FiscalSign: String
+  QRCodeURL: String
+}
+
+type CheckTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [CheckTypeEdge]!
+}
+
+"""A Relay edge containing a `CheckType` and its cursor."""
+type CheckTypeEdge {
+  """The item at the end of the edge"""
+  node: CheckType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type HCSPriceType {
+  id: ID!
+  dateStart: Date!
+  service: String!
+  price: Int!
+}
+
+type AutoPayType implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  account: JSONString!
+  accountData: JSONString!
+  merchant: MerchantType!
+  amount: BigInt
+  autopayType: String!
+  dayOfMonth: Int
+  dayOfWeek: String
+  card: LocalConnectedCardType
+  dayTime: String!
+  nextPayment: AutoPayNextPaymentType
+}
+
+type AutoPayNextPaymentType {
+  date: DateTime
+  dayTime: String
+}
+
+type AutoPayTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [AutoPayTypeEdge]!
+}
+
+"""A Relay edge containing a `AutoPayType` and its cursor."""
+type AutoPayTypeEdge {
+  """The item at the end of the edge"""
+  node: AutoPayType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type MerchantCategoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MerchantCategoryTypeEdge]!
+}
+
+"""A Relay edge containing a `MerchantCategoryType` and its cursor."""
+type MerchantCategoryTypeEdge {
+  """The item at the end of the edge"""
+  node: MerchantCategoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type DeleteAccountReasonTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [DeleteAccountReasonTypeEdge]!
+}
+
+"""A Relay edge containing a `DeleteAccountReasonType` and its cursor."""
+type DeleteAccountReasonTypeEdge {
+  """The item at the end of the edge"""
+  node: DeleteAccountReasonType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type DeleteAccountReasonType implements Node {
+  id: ID!
+  name: String!
+}
+
+type StoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [StoryTypeEdge]!
+}
+
+"""A Relay edge containing a `StoryType` and its cursor."""
+type StoryTypeEdge {
+  """The item at the end of the edge"""
+  node: StoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type StoryType implements Node {
+  """The ID of the object"""
+  id: ID!
+  title: String!
+
+  """Agar keyinroq chop etmoqchi bo'lsangiz, vaqtini tanlang"""
+  publishDate: DateTime!
+  externalUrl: String
+  order: Int!
+  thumbnailUrl: String
+  isViewed: Boolean
+}
+
+type StoryContentType {
+  id: ID!
+  contentType: CommonStoryContentContentTypeChoices!
+
+  """Sekundda"""
+  duration: Int!
+  image: String
+  video: String
+  richtext: String
+  order: Int!
+}
+
+"""An enumeration."""
+enum CommonStoryContentContentTypeChoices {
+  """Rasm"""
+  IMAGE
+
+  """Video"""
+  VIDEO
+
+  """Matn"""
+  RICHTEXT
+}
+
+type CommonBillType {
+  billType: BillTypeType
+  costWithCounter: Float
+  costWithoutCounter: Float
+}
+
+type BillTypeType {
+  name: String!
+  measureUnit: String!
+  iconUrl: String
+}
+
+enum PersonTypesEnum {
+  physical
+  legal
+}
+
+type RegionType {
+  id: ID!
+  name: String!
+  bills: [BillType!]!
+}
+
+type BillType {
+  billType: BillTypeType!
+  ppWithCounter: Float!
+  ppWithoutCounter: Float!
+  lpWithCounter: Float!
+  lpWithoutCounter: Float!
+}
+
+type NewsCategoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [NewsCategoryTypeEdge]!
+}
+
+"""A Relay edge containing a `NewsCategoryType` and its cursor."""
+type NewsCategoryTypeEdge {
+  """The item at the end of the edge"""
+  node: NewsCategoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type NewsCategoryType implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+  news(offset: Int = null, before: String = null, after: String = null, first: Int = null, last: Int = null, title_Icontains: String = null, category: ID = null): NewsTypeConnection!
+}
+
+type NewsTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [NewsTypeEdge]!
+
+  """Number of items in the queryset."""
+  totalCount: Int!
+}
+
+"""A Relay edge containing a `NewsType` and its cursor."""
+type NewsTypeEdge {
+  """The item at the end of the edge"""
+  node: NewsType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type NewsType implements Node {
+  """The ID of the object"""
+  id: ID!
+  title: String!
+  slug: String!
+  thumbnail: String
+  category: NewsCategoryType
+  content: String!
+
+  """Agar keyinroq chop etmoqchi bo'lsangiz, vaqtini tanlang"""
+  publishDate: DateTime!
+}
+
+type BlogCategoryTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BlogCategoryTypeEdge]!
+}
+
+"""A Relay edge containing a `BlogCategoryType` and its cursor."""
+type BlogCategoryTypeEdge {
+  """The item at the end of the edge"""
+  node: BlogCategoryType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BlogCategoryType implements Node {
+  """The ID of the object"""
+  id: ID!
+  name: String!
+}
+
+type BlogType implements Node {
+  """The ID of the object"""
+  id: ID!
+  category: BlogCategoryType!
+  title: String!
+  content: String!
+  viewCount: Int!
+  publishDate: Date
+  bannerUrl: String
+  iconUrl: String
+}
+
+type BlogTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BlogTypeEdge]!
+
+  """Number of items in the queryset."""
+  totalCount: Int!
+}
+
+"""A Relay edge containing a `BlogType` and its cursor."""
+type BlogTypeEdge {
+  """The item at the end of the edge"""
+  node: BlogType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type ServiceType {
+  id: ID!
+  name: String!
+  price: Int
+  description: String!
+  type: CommonServiceTypeChoices
+  meta: GenericScalar
+  charge: Int
+  subscription: UserServiceType
+}
+
+"""An enumeration."""
+enum CommonServiceTypeChoices {
+  """Monitoring"""
+  MONITORING
+
+  """Avtomobil jarimalari"""
+  CAR_FINES
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+type UserServiceType {
+  enabled: Boolean!
+  startDate: Date
+  stopDate: Date
+  lastPayedDate: DateTime
+}
+
+type PageType {
+  id: ID!
+  slug: String!
+  title: String!
+  content: String
+}
+
+type NotificationTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [NotificationTypeEdge]!
+}
+
+"""A Relay edge containing a `NotificationType` and its cursor."""
+type NotificationTypeEdge {
+  """The item at the end of the edge"""
+  node: NotificationType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type NotificationType implements Node {
+  seenTime: DateTime
+  id: ID!
+  type: String
+  cover: String
+  title: String
+  content: String
+  createdAt: DateTime
+  extraData: JSONString
+}
+
+type UserNotificationStatisticsType {
+  total: Int
+  unseen: Int
+}
+
+type FAQTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [FAQTypeEdge]!
+}
+
+"""A Relay edge containing a `FAQType` and its cursor."""
+type FAQTypeEdge {
+  """The item at the end of the edge"""
+  node: FAQType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type FAQType implements Node {
+  question: String!
+  answer: String!
+  id: ID!
+}
+
+type CadasterAddressType implements Node {
+  """The ID of the object"""
+  id: ID!
+  address: String
+}
+
+type UserDeviceTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [UserDeviceTypeEdge]!
+}
+
+"""A Relay edge containing a `UserDeviceType` and its cursor."""
+type UserDeviceTypeEdge {
+  """The item at the end of the edge"""
+  node: UserDeviceType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type UserDeviceType implements Node {
+  id: ID!
+  user: UserModelType
+  appModule: CommonUserDeviceAppModuleChoices
+  deviceId: String!
+  fcmToken: String
+  displayName: String!
+  trusted: Boolean!
+  loggedOut: Boolean!
+  deviceType: CommonUserDeviceDeviceTypeChoices!
+  addTime: DateTime!
+  lastLoginTime: DateTime!
+  lastIpAddress: String!
+  preferredLanguage: String
+  createdChecks: [SingleMonitoringKPTransactionType!]!
+  payedChecks: [SingleMonitoringKPTransactionType!]!
+  fcmId: String
+}
+
+"""An enumeration."""
+enum CommonUserDeviceAppModuleChoices {
+  """Kabinet"""
+  CABINET
+
+  """Biznes kabinet"""
+  BUSINESS_CABINET
+}
+
+"""An enumeration."""
+enum CommonUserDeviceDeviceTypeChoices {
+  """Android"""
+  A_1
+
+  """iOS"""
+  A_2
+
+  """Web"""
+  A_3
+}
+
+type MyHomeTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [MyHomeTypeEdge]!
+}
+
+"""A Relay edge containing a `MyHomeType` and its cursor."""
+type MyHomeTypeEdge {
+  """The item at the end of the edge"""
+  node: MyHomeType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BankBranchTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BankBranchTypeEdge]!
+}
+
+"""A Relay edge containing a `BankBranchType` and its cursor."""
+type BankBranchTypeEdge {
+  """The item at the end of the edge"""
+  node: BankBranchType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type BankBranchType implements Node {
+  """The ID of the object"""
+  id: ID!
+  bank: BankType!
+  name: String!
+}
+
+type BankTypeConnection {
+  """Pagination data for this connection."""
+  pageInfo: PageInfo!
+
+  """Contains the nodes in this connection."""
+  edges: [BankTypeEdge]!
+}
+
+"""A Relay edge containing a `BankType` and its cursor."""
+type BankTypeEdge {
+  """The item at the end of the edge"""
+  node: BankType
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+type Mutation {
+  idRequestOtp(clientSecret: String = null, phone: String = null, purpose: String = null): RequestOTPMutation
+  idSubmitOtp(clientSecret: String = null, otp: String = null, sid: String = null): SubmitOTPMutation
+  monitoringService(cardIds: [UUID] = null, enable: Boolean = null): MonitoringService
+  internalCheckoutCreate(account: AccountType!, amount: BigInt!, merchantId: UUID!): InternalCheckoutCreate
+  internalCheckoutPayment(cardNumber: String!, checkId: UUID!, expiry: String!): InternalCheckoutPayment
+  internalCheckoutConfirm(checkId: UUID!, cid: UUID!, otp: String!): InternalCheckoutConfirm
+  p2pInternational(amount: BigInt!, cardId: String = null, pan: String = null, recipientId: String = null): P2PInternational
+  p2pInternationalState(checkId: String!): P2PInternationalState
+  review(input: ProductReviewCreateInput!): ProductReviewCreatePayload
+  basket(input: BasketInput!): BasketPayload
+  createMyTransactionCategory(icon: ID!, name: String!): CreateMyTransactionCategoryMutation
+  updateMyTransactionCategory(icon: ID!, id: ID!, name: String!): UpdateMyTransactionCategoryMutation
+  deleteMyTransactionCategory(deleteTransactions: Boolean = true, id: ID!): DeleteMyTransactionCategoryMutation
+  createMyTransaction(amount: Float!, category: ID!, date: Date!, operation: Int!, title: String!): CreateMyTransactionMutation
+  updateMyTransaction(amount: Float!, category: ID!, date: Date!, id: ID!, operation: Int!, title: String!): UpdateMyTransactionMutation
+  deleteMyTransaction(id: ID!): DeleteMyTransactionMutation
+  getMyTransactionAnalytics(categories: [ID] = null, endDate: Date = null, startDate: Date = null, year: Int = null): GetMyTransactionsAnalytics
+  checkPay(cardId: ID!, checkId: ID!, otp: String = null): PayCheck
+  p2pCheck(
+    """Amount for payment"""
+    amount: Decimal = null
+
+    """Card id for payment"""
+    cardId: UUID!
+
+    """Connected card id"""
+    connectedCardId: UUID = null
+
+    """Recipient card number"""
+    pan: String = null
+
+    """Recipient id"""
+    recipientId: ID = null
+  ): P2PCheck
+  createPayCheckRequest(checkId: ID!, phone: String!): CreatePayCheckRequest
+  cancelPayCheckRequest(paycheckRequestId: ID!): CancelPayCheckRequest
+  getChecks(cardIds: [ID] = null, debugUser: Int = null, end: Date = null, limit: Int = null, merchantCategoryIds: [ID] = null, moment: DateTime = null, offset: Int = null, operation: Int = null, p2pPairCardIds: [ID] = null, page: Int = null, start: Date = null, usingKp: Boolean = null): GetChecks
+  getMonitoringStatistics(cardIds: [ID] = null, end: Date = null, merchantCategoryIds: [ID] = null, p2pPairCardIds: [ID] = null, range: String = "day", start: Date = null, usingKp: Boolean = null): GetMonitoringStatistics
+  getThisMonthStatistics: GetThisMonthStatistics
+  getSmartcomboValues(account: AccountType = null, fieldName: String!, merchantId: UUID!): GetSmartComboValues
+  checkCreate(account: AccountType!, amount: BigInt!, merchantId: UUID!, products: [CheckProductItemInputType] = null, savedPaymentId: ID = null): CreateCheck
+  accountInfo(account: AccountType!, merchantId: ID!): AccountInfo
+  autopayCreate(account: AccountType!, amount: Int!, autopayType: String!, cardId: ID!, dayOfMonth: Int = null, dayOfWeek: String = null, dayTime: String!, merchantId: UUID!, name: String!): CreateAutoPay
+  autopayChange(account: AccountType!, amount: Int!, autopayType: String!, cardId: ID!, dayOfMonth: Int = null, dayOfWeek: String = null, dayTime: String!, id: ID!, name: String!): ChangeAutoPay
+  autopayDelete(id: ID = null): DeleteAutoPay
+  merchantsByAccount(account: String!, categoryInternalType: CategoryInternalTypesEnum!): MerchantsByAccount
+  homePaymentHistoryStatistics(categories: [ID] = null, dateFrom: Date = null, dateTo: Date = null, houseId: ID = null): MyHousePaymentsTransactionHistory
+  carCreate(carModel: Int!, photo: Upload = null, plateNumber: String!, techPass: String!, year: String = null): CreateCar
+  carDelete(carId: Int!): DeleteCar
+  carChange(id: Int!, photo: Upload = null): ChangeCar
+  oilChangeCreate(brandId: Int!, carId: Int!, dailyKm: Int = null, kmfor: Int!, lastChangeDate: Date!, lastMileage: Int!): CreateOilChange
+  oilChangeEdit(brandId: Int!, dailyKm: Int = null, id: Int!, kmfor: Int!, lastChangeDate: Date!, lastMileage: Int!): EditOilChange
+  register(firstName: String = null, fullName: String = null, isPartner: Boolean = false, lastName: String = null, password: String!, phone: String!): Register
+  login(deviceId: String!, deviceType: Int!, isPartner: Boolean = false, password: String!, phone: String!, trusted: Boolean = null): Login
+  checkPhone(isPartner: Boolean = false, phone: String!): CheckPhone
+  activate(deviceId: String!, deviceName: String = null, deviceType: Int!, isPartner: Boolean = false, otp: String!, phone: String!, trusted: Boolean = null): PhoneActivate
+  confirm(deviceId: String!, deviceName: String = null, deviceType: Int!, isPartner: Boolean = false, otp: String!, phone: String!, trusted: Boolean = null): ConfirmLogin
+  logout: Logout
+  changeMe(address: String = null, avatar: Upload = false, backupPhone: String = null, birthday: Date = null, email: String = null, firstName: String = null, fullName: String = null, gender: String = null, lastName: String = null, smsForAll: Boolean = null, username: String = null): ChangeMe
+  homeCreate(cadasterNumber: String = null, photo: Upload = null, title: String!): CreateHome
+  savedPaymentCreate(account: JSONString = null, accountV2: AccountType = null, amount: Int!, merchantId: ID!, myhomeId: Int = null, title: String!): CreateSavedPayment
+  addToHome(myhomeId: Int = null, savedPaymentId: Int!): AddToHome
+  savedPaymentEdit(account: JSONString = null, accountV2: AccountType = null, amount: Int!, id: ID!, title: String!): EditSavedPayment
+  savedPaymentDelete(id: ID!): DeleteSavedPayment
+  homeEdit(cadasterNumber: String = null, id: Int!, photo: Upload = null, title: String!): EditHome
+  homeDelete(id: Int!): DeleteHome
+  sendEmailCode: SendEmailCode
+  checkEmailCode(code: String!): CheckEmailCode
+  sendLinks(phoneNumber: String!): SendLinks
+  checkUsername(username: String!): CheckUsername
+  qrAuth(code: String!, deviceId: String!, deviceName: String!, deviceType: Int!): QRAuthMutation
+  serviceSubscribe(enable: Boolean!, serviceId: Int!): ServiceSubscribe
+  changePassword(currentPassword: String!, newPassword: String!): ChangeUserPasswordMutation
+  myidCode(code: String!): MyIDCode
+  resetPassword(isPartner: Boolean = false, phone: String!): ResetPassword
+  checkResetPassword(isPartner: Boolean = false, otp: String!, phone: String!): CheckResetPasswordOTP
+  confirmResetPassword(isPartner: Boolean = false, newPassword: String!, otp: String!, phone: String!): ConfirmResetPassword
+  logoutOtherSingleDevice(id: ID!): LogoutOtherSingleDevice
+  logoutOtherDevices(refreshToken: String!): LogoutOtherDevices
+  deleteAccount(deleteReasonText: String = null, deleteReasons: [ID] = null, password: String!): DeleteAccount
+  init: Init
+  callRequestCreate: CreateCallRequest
+  uploadFile(file: Upload!): UploadFile
+  uploadImage(image: Upload!): UploadImage
+  updateDeviceFcmId(deviceId: String!, token: String!): UpdateDeviceFCMToken
+  setNotificationsAsSeen(id: ID = null): SetNotificationsAsSeen
+  setDeviceLanguage(deviceId: String!, lang: String!): SetDeviceLanguage
+  cardCreate(expiry: String!, main: Boolean = null, name: String!, pan: String!, style: Int = null): CreateCard
+  cardActivate(cid: UUID!, main: Boolean = false, otp: String!): ActivateCard
+  importConnectedCards(connectedCardIds: [UUID]!, pv: PhoneVerificationInput!): ImportConnectedCards
+  cardDelete(cardId: UUID!): DeleteCard
+  resendCardActivate(cid: UUID!): ResendActivateCard
+  cardChange(cardName: String = null, id: UUID!, inTotalBalance: Boolean = null, main: Boolean = null, style: Int = null): ChangeCard
+  p2pInfo(cardId: String = null, connectedCardId: ID = null, pan: String = null, recipientId: String = null): P2PInfo
+  p2pCardByPhone(phone: String!): P2PCardByPhone
+  p2pCreate(amount: BigInt!, cardId: String = null, comment: String = null, connectedCardId: ID = null, linkedCardId: ID = null, pan: String = null, recipientId: String = null): P2PCreate
+  removeRecipient(recipientId: ID!): RemoveRecipient
+  verifyToken(token: String = null): Verify
+  refreshToken(refreshToken: String = null): Refresh
+}
+
+type RequestOTPMutation {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  sid: String
+}
+
+"""Error type"""
+type ErrorType {
+  message: String
+  code: Int
+  sec: Int
+  secToRetry: Int
+  data: String
+}
+
+type SubmitOTPMutation {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  sid: String
+}
+
+type MonitoringService {
+  success: Boolean
+  errors: [String]
+  cards: [CardType]
+}
+
+type InternalCheckoutCreate {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  check: CheckType
+}
+
+"""Account dynamic json field"""
+scalar AccountType
+
+type InternalCheckoutPayment {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+  otpSentMaskedPhone: String
+  cid: UUID
+}
+
+type InternalCheckoutConfirm {
+  success: Boolean
+  check: CheckType
+  errors: [ErrorType]
+  message: String
+}
+
+type P2PInternational {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  accountData: AccountInfoType
+  url: String
+  check: UnisoftCheckType
+}
+
+scalar AccountInfoType
+
+type P2PInternationalState {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  check: UnisoftCheckType
+}
+
+type ProductReviewCreatePayload {
+  id: Int
+  product: String
+  score: Int
+  body: String
+  isAnonymous: Boolean
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input ProductReviewCreateInput {
+  id: Int
+  product: String
+  score: Int!
+  body: String!
+  isAnonymous: Boolean
+  clientMutationId: String
+}
+
+type BasketPayload {
+  id: Int
+  product: String
+  stockrecord: String
+  quantity: Int
+  priceCurrency: String
+
+  """May contain more than one error for same field."""
+  errors: [ErrorType]
+  clientMutationId: String
+}
+
+input BasketInput {
+  id: Int
+  product: String!
+  stockrecord: String!
+  quantity: Int
+  priceCurrency: String
+  clientMutationId: String
+}
+
+type CreateMyTransactionCategoryMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  category: MyTransactionCategoryType
+}
+
+type UpdateMyTransactionCategoryMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  category: MyTransactionCategoryType
+}
+
+type DeleteMyTransactionCategoryMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type CreateMyTransactionMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  transaction: MyTransactionType
+}
+
+type UpdateMyTransactionMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  transaction: MyTransactionType
+}
+
+type DeleteMyTransactionMutation {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type GetMyTransactionsAnalytics {
+  debitAnalytics: [AnalyticsType]
+  creditAnalytics: [AnalyticsType]
+  debitForCurrentMonth: Int
+  creditForCurrentMonth: Int
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type AnalyticsType {
+  sumAmount: BigInt
+  transDt: Date
+}
+
+type PayCheck {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  check: CheckType
+  otpRequired: Boolean
+  otpPhone: String
+}
+
+type P2PCheck {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type CreatePayCheckRequest {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  paycheckRequest: PayCheckRequestType
+}
+
+type CancelPayCheckRequest {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  paycheckRequest: PayCheckRequestType
+}
+
+type GetChecks {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  checks: [MonitoringChecksType]
+  isEnd: Boolean
+
+  """Total count of checks (Deprecated. Performance issues)"""
+  totalCount: Int
+  debitAmount: Float
+  creditAmount: Float
+  subscription: UserServiceType
+}
+
+type MonitoringChecksType {
+  id: UUID
+  trno: ID
+  processing: String
+  createTime: DateTime
+  payTime: DateTime
+  cancelTime: Int
+  amount: BigInt
+  commission: BigInt
+  writeOffAmount: BigInt
+  totalAmount: BigInt
+  mainCurrencyAmount: BigInt
+  cardNumber: String
+  currency: Int
+  currencyObj: CurrencyType
+  operation: Int
+  merchantId: String
+  terminalId: String
+  merchantName: String
+  street: String
+  city: String
+  transType: Int
+  listData: MonitoringListDataType
+  accountData: AccountInfoType
+  kpTransaction: CheckType
+  kpTransactionMerchantCategoryId: ID
+  state: Int
+  isLocal: Boolean
+  insertedAt: DateTime
+}
+
+type MonitoringListDataType {
+  account: String
+  merchant: MonitoringMerchantType
+}
+
+type MonitoringMerchantType {
+  name: String
+  logo: String
+}
+
+type GetMonitoringStatistics {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  debitStatistics: [StatisticsType]
+  creditStatistics: [StatisticsType]
+  debitAmount: Float
+  creditAmount: Float
+  categoryStatistics: [MerchantCategoryStatisticsType]
+  subscription: UserServiceType
+}
+
+type StatisticsType {
+  sumAmount: BigInt
+  transDt: DateTime
+}
+
+type MerchantCategoryStatisticsType {
+  category: MerchantCategoryType
+  debitAmount: BigInt
+  percent: Float
+}
+
+type GetThisMonthStatistics {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  debitAmount: BigInt
+  creditAmount: BigInt
+}
+
+type GetSmartComboValues {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  values: [SmartComboValuesType]
+}
+
+type SmartComboValuesType {
+  title: String
+  value: String
+  extraInfo: AccountType
+}
+
+type CreateCheck {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  check: CheckType
+}
+
+input CheckProductItemInputType {
+  id: Int
+  count: Int
+}
+
+type AccountInfo {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  accountData: AccountInfoType
+}
+
+type CreateAutoPay {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  autopay: AutoPayType
+}
+
+type ChangeAutoPay {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  autopay: AutoPayType
+}
+
+type DeleteAutoPay {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type MerchantsByAccount {
+  merchants: [MerchantType]
+  account: String
+  categoryInternalType: String
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+"""An enumeration."""
+enum CategoryInternalTypesEnum {
+  mobile_operator
+}
+
+type MyHousePaymentsTransactionHistory {
+  myHousePaymentTransactionHistory: [MerchantCategoryStatisticsType]
+  myHouseTotalPaymentHistory: HomePaymentsHistoryStatisticsType
+}
+
+type HomePaymentsHistoryStatisticsType {
+  totalDebitAmount: BigInt
+}
+
+type CreateCar {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  mycar: MyCarType
+}
+
+"""
+Create scalar that ignores normal serialization/deserialization, since
+that will be handled by the multipart request spec
+"""
+scalar Upload
+
+type DeleteCar {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type ChangeCar {
+  message: String
+  success: Boolean
+  errors: [ErrorType]
+  mycar: MyCarType
+}
+
+type CreateOilChange {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  oilChange: OilChangeType
+}
+
+type EditOilChange {
+  message: String
+  success: Boolean
+  errors: [ErrorType]
+  oilChange: OilChangeType
+}
+
+type Register {
+  isSent: Boolean
+  message: String
+  errors: [ErrorType]
+  args: [String]
+}
+
+type Login {
+  token: String
+  payload: GenericScalar
+  refreshToken: String
+  isSent: Boolean
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  args: [String]
+}
+
+type CheckPhone {
+  phoneExists: Boolean
+  errors: [ErrorType]
+}
+
+type PhoneActivate {
+  token: String
+  refreshToken: String
+  message: String
+  errors: [ErrorType]
+}
+
+type ConfirmLogin {
+  token: String
+  refreshToken: String
+  message: String
+  errors: [ErrorType]
+}
+
+type Logout {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type ChangeMe {
+  message: String
+  success: Boolean
+  errors: [ErrorType]
+  me: UserModelType
+}
+
+type CreateHome {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  home: MyHomeType
+}
+
+type CreateSavedPayment {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  savedPayment: SavedPaymentType
+}
+
+type AddToHome {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type EditSavedPayment {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  savedPayment: SavedPaymentType
+}
+
+type DeleteSavedPayment {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  savedPayment: SavedPaymentType
+}
+
+type EditHome {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  home: MyHomeType
+}
+
+type DeleteHome {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  savedPayment: SavedPaymentType
+}
+
+type SendEmailCode {
+  isSent: Boolean
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type CheckEmailCode {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type SendLinks {
+  isSent: Boolean
+  success: Boolean
+  message: String
+  args: [String]
+  errors: [ErrorType]
+}
+
+type CheckUsername {
+  isFree: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type QRAuthMutation {
+  errors: [ErrorType]
+  token: String
+  refreshToken: String
+  message: String
+}
+
+type ServiceSubscribe {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  service: ServiceType
+}
+
+type ChangeUserPasswordMutation {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type MyIDCode {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type ResetPassword {
+  isSent: Boolean
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  args: [String]
+}
+
+type CheckResetPasswordOTP {
+  errors: [ErrorType]
+  message: String
+}
+
+type ConfirmResetPassword {
+  errors: [ErrorType]
+  message: String
+}
+
+type LogoutOtherSingleDevice {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type LogoutOtherDevices {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type DeleteAccount {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type Init {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type CreateCallRequest {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type UploadFile {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+  uploadedFile: UploadFileType
+}
+
+type UploadFileType implements Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+type UploadImage {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+  uploadedImage: UploadImageType
+}
+
+type UploadImageType implements Node {
+  """The ID of the object"""
+  id: ID!
+}
+
+type UpdateDeviceFCMToken {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type SetNotificationsAsSeen {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type SetDeviceLanguage {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type CreateCard {
+  errors: [ErrorType]
+  isSent: Boolean
+  success: Boolean
+  message: String
+  cid: UUID
+  args: [String]
+}
+
+type ActivateCard {
+  activated: Boolean
+  message: String
+  errors: [ErrorType]
+}
+
+type ImportConnectedCards {
+  success: Boolean
+  message: String
+  errors: [ErrorType]
+  cards: [CardType]
+}
+
+input PhoneVerificationInput {
+  sid: String!
+  clientSecret: String!
+}
+
+type DeleteCard {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type ResendActivateCard {
+  errors: [ErrorType]
+  isSent: Boolean
+  success: Boolean
+  message: String
+  args: [String]
+  cid: UUID
+}
+
+type ChangeCard {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+}
+
+type P2PInfo {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  info: P2PInfoType
+}
+
+"""P2P Info JSON FIELD"""
+scalar P2PInfoType
+
+type P2PCardByPhone {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  cardId: UUID
+  maskedPan: String
+}
+
+type P2PCreate {
+  errors: [ErrorType]
+  success: Boolean
+  message: String
+  check: CheckType
+  hasP2pComplaint: Boolean
+}
+
+type RemoveRecipient {
+  success: Boolean
+  errors: [ErrorType]
+  message: String
+}
+
+type Verify {
+  payload: GenericScalar!
+}
+
+type Refresh {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  token: String!
+  refreshToken: String!
+}
